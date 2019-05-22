@@ -47,10 +47,11 @@ window.onload = function () {
 //返回时间差，单位为秒
 function getCurrentShowSeconds() {
     var curtime = new Date();
-    var ret = endTime.getTime() - curtime.getTime();
-    ret = Math.round(ret / 1000);
+    // var ret = endTime.getTime() - curtime.getTime();
+    //ret = Math.round(ret / 1000);
+    var ret=curtime.getHours()*3600+curtime.getMinutes()*60+curtime.getSeconds();
 
-    return ret >= 0 ? ret : 0;
+    return ret;
 }
 
 //把getCurrentShowSeconds()返回的时间差给换算成多少小时、分钟、秒
