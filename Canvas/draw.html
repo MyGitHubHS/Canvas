@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"  style=" height: 100%; width: 100%;background-color: rgb(224, 112, 112);"></canvas>
+<!-- //border:1px solid #aaa;display:block;margin:50px auto -->
+    <script>
+    window.onload=function(){
+        var canvas=document.getElementById("canvas");
+        canvas.width=800;
+        canvas.height=600;
+
+        if(canvas.getContext("2d")){
+            var context = canvas.getContext("2d");
+        }else{
+            alert("当前浏览器不支持canvas，请更换浏览器后再试。")
+        }
+        context.beginPath()
+        context.moveTo(100,100)
+        context.lineTo(500,500)
+        context.lineTo(100,500)
+        context.lineTo(100,100)
+        context.closePath()
+        // context.beginPath()
+        // context.closePath()一对方法用于隔开两组不同的线的绘制，以免影响，否则后面的颜色会覆盖前面的
+       
+        context.lineWidth=3;
+        context.strokeStyle="#005588"
+        context.stroke();//划线方法
+
+        context.beginPath()
+        context.moveTo(200, 100)
+        context.lineTo(600, 500)
+        context.closePath()
+     
+        context.lineWidth=3;
+        context.strokeStyle="rgb(0,102,153)"
+        context.stroke();
+        // context.fillStyle="rgb(2,100,30)"多边形着色
+        // context.fill()//多边形着色方法
+        
+    }
+    </script>
+</body>
+</html>

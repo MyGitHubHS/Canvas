@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas id="canvas" style="border:1px solid #aaa;display:block;margin:50px auto">当前浏览器不支持Canvas，请更换浏览器后再试！</canvas>
+    <script>
+        var ball = { x: 512, y: 100, r: 4, g: 2, vx: -4, vy: -5, color: "red" }
+        window.onload = function () {
+            var canvas = document.getElementById("canvas");
+
+            canvas.width = 1024;
+            canvas.height = 768;
+
+            var context = canvas.getContext("2d");
+
+            setInterval(function () {
+                render(context);
+                
+                update();
+            }
+                ,
+                50
+            );
+
+        }
+
+        function update() {
+            ball.x += ball.vx;
+            ball.y += ball.vy;
+            ball.vy += ball.g;
+
+            //碰撞检测
+            if(ball.y >= 768 - ball.r) {
+                ball.y=768 - ball.r;
+                ball.vy=-ball.vy*0.6;
+                
+            }
+            
+            if(ball.x<=ball.r){
+                return;
+            }
+        }
+
+
+        function render(cxt) {
+            cxt.clearRect(0, 0, cxt.canvas.width, cxt.canvas.height);
+            cxt.fillStylr = ball.color;
+            cxt.beginPath();
+            cxt.arc(ball.x, ball.y, ball.r, 0, 2 * Math.PI)
+            cxt.fill();
+
+        }
+    </script>
+</body>
+
+</html>
